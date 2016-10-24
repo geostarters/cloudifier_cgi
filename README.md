@@ -1,4 +1,4 @@
-#cgi para crear archivos map del cloudifier
+# cgi para crear archivos map del cloudifier
 
 Archivos cgi de python para el cloudifier
 
