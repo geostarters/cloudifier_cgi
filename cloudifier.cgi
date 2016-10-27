@@ -33,7 +33,7 @@ formato = fs.getvalue('format')
 geometry = fs.getvalue('geometry')
 fileitem = fs['clientfile']
 
-uploaddir = '/dades/serveis/cloudifier/'
+uploaddir = '/cloudifier/serveis/cloudifier/'
 
 filename = uuid.uuid4().int
 hashids = Hashids(salt='geostarterscloudifier')
@@ -42,6 +42,9 @@ filename = str(filename)
 
 def tifMap():
     rasterMap('.tif')
+	
+def ecwMap():
+    rasterMap('.ecw')
 
 def mrsidMap():
     rasterMap('.sid')
@@ -147,6 +150,7 @@ def createMapFile(template, dirdades, outfile):
 options = {
     'shp': shpMap,
     'tif': tifMap,
+	'ecw': ecwMap,
     'sid': mrsidMap,
     'dxf': dxfMap,
     'dgn': dgnMap,

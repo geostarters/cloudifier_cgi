@@ -8,5 +8,5 @@ En el betaserver los archivos están en
 	
 Los mapfiles y los archivos cargados se guardan en
 
-	/dades/serveis/cloudifier
+	/cloudifier/serveis/cloudifier/
 	
