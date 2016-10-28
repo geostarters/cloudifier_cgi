@@ -1,0 +1,113 @@
+MAP
+NAME '${layerName}'
+CONFIG "PROJ_LIB" '/cloudifier/serveis/proj/'
+STATUS ON
+FONTSET '/cloudifier/serveis/fonts/TrueType/fonts.list'
+EXTENT -20037508.34  -20037508.34  20037508.34  20037508.34 
+#Unitats del mapa
+UNITS METERS 
+MAXSIZE 44096
+
+SYMBOLSET  "../symbols/symbols.sym"
+#Format de sortida de la imatge
+
+OUTPUTFORMAT
+  NAME "png8"
+  DRIVER AGG/PNG8
+  MIMETYPE "image/png"
+  IMAGEMODE RGBA
+  EXTENSION "png"
+  FORMATOPTION "QUANTIZE_FORCE=on"
+  FORMATOPTION "QUANTIZE_COLORS=256"
+  FORMATOPTION "GAMMA=0.75"
+END
+
+OUTPUTFORMAT
+  NAME "geojson"
+  DRIVER "OGR/GEOJSON"
+  MIMETYPE "application/json; subtype=geojson"
+  FORMATOPTION "STORAGE=stream"
+  FORMATOPTION "FORM=simple"
+  #FORMATOPTION "FILENAME=result.geojson"
+END
+
+#Projecció en coordenades geogràfiques
+PROJECTION
+"init=epsg:3857"
+END
+
+#Definició de las  capacitats 
+WEB
+IMAGEPATH "/dades/html/tmp/"
+IMAGEURL "/tmp/"
+EMPTY "http://betaserver.icgc.cat"
+ METADATA
+      OWS_TITLE "${layerName}"
+	  OWS_ABSTRACT "ICGC_FILE2GEOSERVICE"
+      OWS_ENABLE_REQUEST   "*"      
+      OWS_FEATURE_INFO_MIME_TYPE  "text/html"
+      OWS_ONLINERESOURCE "http://betaserver.icgc.cat/geoservice/${rutaMapfile}?"    
+      OWS_SRS "EPSG:4326 EPSG:23031 EPSG:25831 EPSG:25830 EPSG:25829 EPSG:4258 EPSG:4230 EPSG:3857 EPSG:32631"
+	  OWS_EXTENT                       "-20037508.34  -20037508.34  20037508.34  20037508.34"
+	  OWS_ACCESSCONTRAINTS             "NONE"
+      OWS_ADDRESSTYPE                  "MAILING ADDRESS"    
+      OWS_CITY                         "Barcelona"
+      OWS_STATEORPROVINCE              "Barcelona"    
+      OWS_CONTACTELECTRONICMAILADDRESS "instamaps@icgc.cat"    
+      OWS_CONTACTPERSON                ""
+      OWS_CONTACTORGANIZATION          "Institut Cartogràfic i Geològic de Catalunya"    
+      OWS_FEES                         "http://www.icgc.cat"          
+      OWS_ADDRESS                      "Parc de Montjuic sn"     
+      OWS_POSTCODE                     "08038"
+      OWS_COUNTRY                      "Spain"
+      OWS_CONTACTPOSITION              "Geostarters" 
+      OWS_ACCESSCONSTRAINTS            "none"
+      OWS_CONTACTVOICETELEPHONE        ""
+      OWS_SERVICE_ONLINERESOURCE       "http://catalegidec.icc.cat"
+	  OWS_ROLE                         "Provaider"
+      OWS_KEYWORDLIST                  "Catalunya,servei,Mapa"
+      OWS_CONTACTFACSIMILETELEPHONE    ""
+      OWS_HOURSOFSERVICE               ""
+      OWS_CONTACTINSTRUCTIONS          ""
+      OWS_ATTRIBUTION_ONLINERESOURCE   "http://www.icgc.cat"
+      OWS_ATTRIBUTION_TITLE            "ICGC"
+      OWS_BBOX_EXTENDED                "True"     
+      OWS_HTTP_MAX_AGE "3600"
+      LABELCACHE_MAP_EDGE_BUFFER "10"
+      OWS_SLD_ENABLED "true"
+	  END
+END
+LEGEND
+  STATUS ON
+  POSITION ur
+  LABEL
+	ENCODING UTF-8
+	TYPE TRUETYPE
+	FONT "Arial"
+	SIZE 10
+	OFFSET 0 -5
+  END
+END
+  
+  LAYER
+    NAME '${layerName}'
+    TYPE LINE  #POLYGON LINE POINT
+    STATUS ON
+	CONNECTIONTYPE OGR
+	CONNECTION  "dades/${dataFileName}"
+	STYLEITEM "AUTO"
+    CLASS
+    END
+	PROJECTION
+	"init=${srs}"
+	END
+	METADATA
+      'ows_title' 'line'
+	  'ows_group_title' '${layerName}'
+	  OWS_SRS "EPSG:4326 EPSG:23031 EPSG:25831 EPSG:25830 EPSG:25829 EPSG:4258 EPSG:4230 EPSG:3857 EPSG:32631"
+	  WFS_GETFEATURE_FORMATLIST "geojson"
+	END   
+  END #end layer
+ 
+   
+END
