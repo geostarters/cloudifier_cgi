@@ -10,3 +10,9 @@ Los mapfiles y los archivos cargados se guardan en
 
 	/cloudifier/serveis/cloudifier/
 	
+Los templates van en la carpeta
+
+	/cloudifier/serveis/cloudifier/templates
+	
+	
+	
