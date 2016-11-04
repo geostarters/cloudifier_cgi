@@ -89,32 +89,30 @@ LEGEND
   END
 END
 
+
   LAYER
     NAME '${layerName}'   
-    TYPE POINT  #POLYGON LINE POINT
+    TYPE POLYGON  #POLYGON LINE POINT
     STATUS ON
 	DATA  "dades/${dataFileName}"
 	DUMP TRUE
 	TEMPLATE "NONE"
 	TOLERANCE 10	
-   PROJECTION
+    CLASSITEM "${camp}"
+	LABELCACHE ON
+    LABELITEM "${camp}"
+	POSTLABELCACHE FALSE
+	PROCESSING "LABEL_NO_CLIP=ON"
+	PROJECTION
 	"init=${srs}"
 	END
-	CLASS
-       STYLE
-         SYMBOL "circle"
-		     SIZE 12
-         #OUTLINECOLOR ${color}
-		 #COLOR -1 -1 -1
-		 COLOR ${color}
-       END
-    END
+	${estils}
     METADATA
-      'ows_title' '${layerName}'
-	  OWS_SRS "EPSG:4326 EPSG:23031 EPSG:25831 EPSG:25830 EPSG:25829 EPSG:4258 EPSG:4230 EPSG:3857 EPSG:32631"
-	  #"OWS_EXTENT" "-20037508.34  -20037508.34  20037508.34  20037508.34"
-	  "gml_include_items" "all"	
-	  WFS_GETFEATURE_FORMATLIST "geojson"	  
+		'ows_title' '${layerName}'
+		"OWS_SRS" "EPSG:4326 EPSG:25831 EPSG:25830 EPSG:25829 EPSG:3857 EPSG:4258 EPSG:23031"
+		#"OWS_EXTENT" "-20037508.34  -20037508.34  20037508.34  20037508.34"
+		"gml_include_items" "all"
+		WFS_GETFEATURE_FORMATLIST "geojson"	  
 	END   
   END #end layer
    

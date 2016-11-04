@@ -112,7 +112,7 @@ END
 		'ows_title' '${layerName}'
 		"OWS_SRS" "EPSG:4326 EPSG:25831 EPSG:25830 EPSG:25829 EPSG:3857 EPSG:4258 EPSG:23031"
 		#"OWS_EXTENT" "-20037508.34  -20037508.34  20037508.34  20037508.34"
-		"ows_include_items" "all"
+		"gml_include_items" "all"
 		WFS_GETFEATURE_FORMATLIST "geojson"	  
 	END   
   END #end layer
