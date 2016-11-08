@@ -46,7 +46,7 @@ EMPTY "http://betaserver.icgc.cat"
 	  OWS_ABSTRACT "ICGC_FILE2GEOSERVICE"
       OWS_ENABLE_REQUEST   "*"      
       OWS_FEATURE_INFO_MIME_TYPE  "text/html"
-      OWS_ONLINERESOURCE "http://betaserver.icgc.cat/geoservice/${rutaMapfile}?"     
+      OWS_ONLINERESOURCE "http://betaserver.icgc.cat/geoservice/${rutaMapfile}?"    
       OWS_SRS "EPSG:4326 EPSG:23031 EPSG:25831 EPSG:25830 EPSG:25829 EPSG:4258 EPSG:4230 EPSG:3857 EPSG:32631"
 	  OWS_EXTENT                       "-20037508.34  -20037508.34  20037508.34  20037508.34"
 	  OWS_ACCESSCONTRAINTS             "NONE"
@@ -92,7 +92,7 @@ END
 
   LAYER
     NAME '${layerName}'   
-    TYPE POINT  #POLYGON LINE POINT
+    TYPE LINE  #POLYGON LINE POINT
     STATUS ON
 	DATA  "dades/${dataFileName}"
 	DUMP TRUE
@@ -101,18 +101,17 @@ END
 	PROJECTION
 		"init=${srs}"
 	END
-	CLASS
-		STYLE
-			SYMBOL "circle"
-			SIZE 12
-			COLOR ${color}
-		END
-    END
+	CLASSITEM "${camp}"
+	LABELCACHE ON
+    LABELITEM "${camp}"
+	POSTLABELCACHE FALSE
+	PROCESSING "LABEL_NO_CLIP=ON"
+	${estils}
     METADATA
 		'ows_title' '${layerName}'
 		OWS_SRS "EPSG:4326 EPSG:23031 EPSG:25831 EPSG:25830 EPSG:25829 EPSG:4258 EPSG:4230 EPSG:3857 EPSG:32631"
-		"gml_include_items" "all"	
-		WFS_GETFEATURE_FORMATLIST "geojson"	  
+		"gml_include_items" "all"
+		WFS_GETFEATURE_FORMATLIST "geojson"
 	END   
   END #end layer
    

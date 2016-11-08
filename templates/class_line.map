@@ -1,0 +1,9 @@
+CLASS
+	NAME "${value}"
+	EXPRESSION "${value}"
+	STYLE
+		WIDTH 2 
+        COLOR "${color}"
+	END
+	${label}
+END
