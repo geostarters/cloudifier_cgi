@@ -75,6 +75,7 @@ mapfile = os.path.join(uploaddir, filename + '.map')
 camp = estil["camp"]
 label = estil["label"]
 labelColor = estil["labelColor"]
+labelCamp = estil["labelCamp"]
 tematic = estil["tematic"]
 
 labelfile = os.path.join(uploaddir, 'templates', 'label.map')
@@ -113,7 +114,7 @@ d.update(srs=str(srs))
 d.update(dataFileName=str(filename + ext))
 d.update(rutaMapfile=str(filename))
 d.update(camp=str(camp))
-d.update(campLabel=str(camp))
+d.update(labelCamp=str(labelCamp))
 d.update(estils=str(classtem))
 
 with open(templatefile, 'r') as f2:
